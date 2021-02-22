@@ -42,4 +42,8 @@ defmodule Sample.MyList do
     Enum.reverse(new_list)
   end
 
+  def simple_delete(list, argument) do
+    new_list = Enum.filter(list, fn(x) -> x != argument end)
+  end
+
 end
