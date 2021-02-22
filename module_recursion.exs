@@ -20,10 +20,16 @@ defmodule Sample.MyList do
   #       my_each(tail)
   #     end
   # end
+  
+
+  # defines function delete_all/2
+  #calls delete_all with 3 args to avoid user passing emptylist
   def delete_all(list, element) do
     delete_all(list, element, [])
   end
 
+  # head is the firt element in the list [1,2,3], head = [1], tail = [2,3]
+  # if first element is equal to element we want to delete call recursive without head
   def delete_all([head | tail], element, new_list) when head === element do
     delete_all(tail, element, new_list)
   end
@@ -31,7 +37,7 @@ defmodule Sample.MyList do
   def delete_all([head | tail], element, new_list) do
     delete_all(tail, element, [head | new_list])
   end
-
+  # if list is empty return new_list with elements minus the removed element
   def delete_all([], element, new_list) do
     Enum.reverse(new_list)
   end
